@@ -2,9 +2,6 @@
 //  SessionTests.m
 //  SessionTests
 //
-//  Created by Curtis on 9/24/14.
-//  Copyright (c) 2014 Datadive. All rights reserved.
-//
 
 #import <XCTest/XCTest.h>
 //#import <OCMock/OCMock.h>

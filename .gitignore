@@ -3,3 +3,11 @@
 /Packages
 /*.xcodeproj
 xcuserdata/
+*.xcworkspace/xcshareddata/*.xcscmblueprint
+*.xcuserdatad*
+*.xccheckout
+/DerivedData/
+/Pods
+Carthage/Build
+swiftpm
+Podfile.lock
