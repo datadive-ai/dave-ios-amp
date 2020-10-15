@@ -9,5 +9,6 @@ xcuserdata/
 /DerivedData/
 /Pods
 Carthage/Build
-swiftpm
+
+.swiftpm
 Podfile.lock
