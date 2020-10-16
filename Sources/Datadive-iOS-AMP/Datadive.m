@@ -73,10 +73,6 @@
 #import <Cocoa/Cocoa.h>
 #endif
 
-#if TARGET_OS_IOS || TARGET_OS_MACCATALYST
-#import "AMPEventExplorer.h"
-#endif
-
 @interface Datadive()
 
 @property (nonatomic, strong) NSOperationQueue *backgroundQueue;
@@ -87,9 +83,6 @@
 @property (nonatomic, assign) long long sessionId;
 @property (nonatomic, assign) BOOL backoffUpload;
 @property (nonatomic, assign) int backoffUploadBatchSize;
-#if TARGET_OS_IOS || TARGET_OS_MACCATALYST
-@property (nonatomic, strong) AMPEventExplorer *eventExplorer;
-#endif
 @end
 
 NSString *const kDDSessionStartEvent = @"session_start";
@@ -454,21 +447,6 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
         };
         [self runSynchronouslyOnMainQueue:checkInForeground];
         _initialized = YES;
-        
-        #if TARGET_OS_IOS || TARGET_OS_MACCATALYST
-        // Release build
-        #if !RELEASE
-        if (self.showEventExplorer) {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void) {
-
-                if (self.eventExplorer == nil) {
-                    self.eventExplorer = [[AMPEventExplorer alloc] initWithInstanceName:self.instanceName];
-                }
-                [self.eventExplorer showBubbleView];
-            });
-        }
-        #endif
-        #endif
     }
 }
 
