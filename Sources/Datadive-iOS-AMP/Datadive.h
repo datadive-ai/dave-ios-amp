@@ -28,8 +28,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef NSString *_Nonnull (^AMPAdSupportBlock)(void);
-typedef NSDictionary *_Nullable (^AMPLocationInfoBlock)(void);
+typedef NSString *_Nonnull (^DDAdSupportBlock)(void);
+typedef NSDictionary *_Nullable (^DDLocationInfoBlock)(void);
 
 /**
  Datadive iOS SDK.
@@ -157,7 +157,7 @@ typedef NSDictionary *_Nullable (^AMPLocationInfoBlock)(void);
  *          return [[ASIdentifierManager sharedManager] advertisingIdentifier];
  *      };
  */
-@property (nonatomic, strong, nullable) AMPAdSupportBlock adSupportBlock;
+@property (nonatomic, strong, nullable) DDAdSupportBlock adSupportBlock;
 
 /**
  * Sets a block to be called when location (latitude, longitude) information can be passed into an event.
@@ -174,15 +174,8 @@ typedef NSDictionary *_Nullable (^AMPLocationInfoBlock)(void);
  *              };
  *      };
  */
-@property (nonatomic, strong, nullable) AMPLocationInfoBlock locationInfoBlock;
+@property (nonatomic, strong, nullable) DDLocationInfoBlock locationInfoBlock;
 
-#if TARGET_OS_IOS || TARGET_OS_MACCATALYST
-/**
- Show Datadive Event Explorer when you're running a debug build.
- */
-@property (nonatomic, assign, readwrite) BOOL showEventExplorer;
-
-#endif
 
 #pragma mark - Methods
 
