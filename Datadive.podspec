@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "Datadive"
-  spec.version      = "1.0.3"
+  spec.version      = "1.0.4"
   spec.summary      = "Datadive iOS SDK."
   spec.homepage     = "https://datadive.ai"
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
@@ -66,7 +66,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "https://github.com/datadive-ai/dave-ios-amp.git", :tag => "v#{s.version}" }
+  spec.source       = { :git => "https://github.com/datadive-ai/dave-ios-amp.git", :tag => "v#{spec.version}" }
   
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
