@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "Datadive"
-  spec.version      = "1.0.4"
+  spec.version      = "1.2.0"
   spec.summary      = "Datadive iOS SDK."
   spec.homepage     = "https://datadive.ai"
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"

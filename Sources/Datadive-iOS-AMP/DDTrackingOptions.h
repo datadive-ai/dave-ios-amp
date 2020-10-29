@@ -27,22 +27,22 @@
 
 @property (nonatomic, strong, readonly) NSMutableSet *disabledFields;
 
-- (DDTrackingOptions*)disableCarrier;
-- (DDTrackingOptions*)disableCity;
-- (DDTrackingOptions*)disableCountry;
-- (DDTrackingOptions*)disableDeviceManufacturer;
-- (DDTrackingOptions*)disableDeviceModel;
-- (DDTrackingOptions*)disableDMA;
-- (DDTrackingOptions*)disableIDFA;
-- (DDTrackingOptions*)disableIDFV;
-- (DDTrackingOptions*)disableIPAddress;
-- (DDTrackingOptions*)disableLanguage;
-- (DDTrackingOptions*)disableLatLng;
-- (DDTrackingOptions*)disableOSName;
-- (DDTrackingOptions*)disableOSVersion;
-- (DDTrackingOptions*)disablePlatform;
-- (DDTrackingOptions*)disableRegion;
-- (DDTrackingOptions*)disableVersionName;
+- (DDTrackingOptions *)disableCarrier;
+- (DDTrackingOptions *)disableCity;
+- (DDTrackingOptions *)disableCountry;
+- (DDTrackingOptions *)disableDeviceManufacturer;
+- (DDTrackingOptions *)disableDeviceModel;
+- (DDTrackingOptions *)disableDMA;
+- (DDTrackingOptions *)disableIDFA;
+- (DDTrackingOptions *)disableIDFV;
+- (DDTrackingOptions *)disableIPAddress;
+- (DDTrackingOptions *)disableLanguage;
+- (DDTrackingOptions *)disableLatLng;
+- (DDTrackingOptions *)disableOSName;
+- (DDTrackingOptions *)disableOSVersion;
+- (DDTrackingOptions *)disablePlatform;
+- (DDTrackingOptions *)disableRegion;
+- (DDTrackingOptions *)disableVersionName;
 
 - (BOOL)shouldTrackCarrier;
 - (BOOL)shouldTrackCity;
@@ -62,9 +62,9 @@
 - (BOOL)shouldTrackVersionName;
 
 - (NSMutableDictionary *)getApiPropertiesTrackingOption;
-- (DDTrackingOptions *)mergeIn: (DDTrackingOptions *)options;
+- (DDTrackingOptions *)mergeIn:(DDTrackingOptions *)options;
 + (instancetype)options;
 + (DDTrackingOptions *)forCoppaControl;
-+ (DDTrackingOptions *)copyOf: (DDTrackingOptions *)origin;
++ (DDTrackingOptions *)copyOf:(DDTrackingOptions *)origin;
 
 @end

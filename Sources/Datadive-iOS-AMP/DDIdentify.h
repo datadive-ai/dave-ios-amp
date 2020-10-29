@@ -72,7 +72,7 @@
 
  @see [User Properties and User Property Operations](https://github.com/amplitude/amplitude-ios#user-properties-and-user-property-operations)
  */
-- (DDIdentify*)add:(NSString*) property value:(NSObject*) value;
+- (DDIdentify *)add:(NSString *)property value:(NSObject *)value;
 
 /**
  Append a value or values to a user property.
@@ -87,14 +87,14 @@
 
  @see [User Properties and User Property Operations](https://github.com/amplitude/amplitude-ios#user-properties-and-user-property-operations)
  */
-- (DDIdentify*)append:(NSString*) property value:(NSObject*) value;
+- (DDIdentify *)append:(NSString *)property value:(NSObject *)value;
 
 /*
  Internal method for clearing user properties.
 
  **Note:** $clearAll needs to be sent on its own Identify object. If there are already other operations, then don't add $clearAll. If $clearAll already in an Identify object, don't allow other operations to be added.
  */
-- (DDIdentify*)clearAll;
+- (DDIdentify *)clearAll;
 
 /**
  Prepend a value or values to a user property. Prepend means inserting the value or values at the front of a list.
@@ -122,7 +122,7 @@
 
  @see [User Properties and User Property Operations](https://github.com/amplitude/amplitude-ios#user-properties-and-user-property-operations)
  */
-- (DDIdentify*)set:(NSString*) property value:(NSObject*) value;
+- (DDIdentify *)set:(NSString *)property value:(NSObject *)value;
 
 
 /**
@@ -138,7 +138,7 @@
 
  @see [User Properties and User Property Operations](https://github.com/amplitude/amplitude-ios#user-properties-and-user-property-operations)
  */
-- (DDIdentify*)setOnce:(NSString*) property value:(NSObject*) value;
+- (DDIdentify *)setOnce:(NSString *)property value:(NSObject *)value;
 
 
 /**
@@ -150,6 +150,6 @@
 
  @see [User Properties and User Property Operations](https://github.com/amplitude/amplitude-ios#user-properties-and-user-property-operations)
  */
-- (DDIdentify*)unset:(NSString*) property;
+- (DDIdentify *)unset:(NSString *)property;
 
 @end

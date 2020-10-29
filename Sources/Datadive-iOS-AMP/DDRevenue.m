@@ -37,11 +37,11 @@
 #import "DDConstants.h"
 #import "DDUtils.h"
 
-@interface DDRevenue()
+@interface DDRevenue ()
 
 @end
 
-@implementation DDRevenue{}
+@implementation DDRevenue
 
 - (instancetype)init {
     if ((self = [super init])) {
@@ -65,7 +65,7 @@
     return YES;
 }
 
-- (DDRevenue*)setProductIdentifier:(NSString *) productIdentifier {
+- (DDRevenue *)setProductIdentifier:(NSString *)productIdentifier {
     if ([DDUtils isEmptyString:productIdentifier]) {
         DATADIVE_LOG(@"Invalid empty productIdentifier");
         return self;
@@ -75,33 +75,33 @@
     return self;
 }
 
-- (DDRevenue*)setQuantity:(NSInteger)quantity {
+- (DDRevenue *)setQuantity:(NSInteger)quantity {
     _quantity = quantity;
     return self;
 }
 
-- (DDRevenue*)setPrice:(NSNumber *)price {
+- (DDRevenue *)setPrice:(NSNumber *)price {
     _price = price;
     return self;
 }
 
-- (DDRevenue*)setRevenueType:(NSString*)revenueType {
+- (DDRevenue *)setRevenueType:(NSString *)revenueType {
     _revenueType = revenueType;
     return self;
 }
 
-- (DDRevenue*)setReceipt:(NSData*)receipt {
+- (DDRevenue *)setReceipt:(NSData *)receipt {
     _receipt = receipt;
     return self;
 }
 
-- (DDRevenue*)setEventProperties:(NSDictionary*)eventProperties {
+- (DDRevenue *)setEventProperties:(NSDictionary *)eventProperties {
     eventProperties = [eventProperties copy];
     _properties = eventProperties;
     return self;
 }
 
-- (NSDictionary*)toNSDictionary {
+- (NSDictionary *)toNSDictionary {
     NSMutableDictionary *dict;
     if (_properties == nil) {
         dict = [[NSMutableDictionary alloc] init];

@@ -24,7 +24,7 @@
 #import "DDConstants.h"
 
 NSString *const kAMPLibrary = @"datadive-ios";
-NSString *const kAMPVersion = @"1.1.0";
+NSString *const kAMPVersion = @"1.2.0";
 NSString *const kAMPUnknownLibrary = @"unknown-library";
 NSString *const kAMPUnknownVersion = @"unknown-version";
 NSString *const kAMPEventLogDomain = @"source.datadive.ai";

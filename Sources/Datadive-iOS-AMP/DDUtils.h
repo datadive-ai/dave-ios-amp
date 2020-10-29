@@ -28,11 +28,11 @@
 
 @interface DDUtils : NSObject
 
-+ (NSString*)generateUUID;
-+ (id)makeJSONSerializable:(id) obj;
-+ (BOOL)isEmptyString:(NSString*) str;
-+ (NSDictionary*)validateGroups:(NSDictionary*) obj;
-+ (NSString*)platformDataDirectory;
++ (NSString *)generateUUID;
++ (id)makeJSONSerializable:(id)obj;
++ (BOOL)isEmptyString:(NSString *)str;
++ (NSDictionary *)validateGroups:(NSDictionary *)obj;
++ (NSString *)platformDataDirectory;
 
 #if !TARGET_OS_OSX
 + (UIApplication *)getSharedApplication;
