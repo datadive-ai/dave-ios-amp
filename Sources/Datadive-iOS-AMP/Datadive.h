@@ -593,7 +593,7 @@ typedef NSDictionary *_Nullable (^DDLocationInfoBlock)(void);
  */
 - (void)useAdvertisingIdForDeviceId;
 
-- (void)setTrackingOptions:(DDTrackingOptions*)options;
+- (void)setTrackingOptions:(DDTrackingOptions *)options;
 
 /**
  Enable COPPA (Children's Online Privacy Protection Act) restrictions on IDFA, IDFV, city, IP address and location tracking.
@@ -627,7 +627,7 @@ typedef NSDictionary *_Nullable (^DDLocationInfoBlock)(void);
 
  @returns the deviceId.
  */
-- (NSString*)getDeviceId;
+- (NSString *)getDeviceId;
 
 /**
  Regenerates a new random deviceId for current user. Note: this is not recommended unless you know what you are doing. This can be used in conjunction with setUserId:nil to anonymize users after they log out. With a nil userId and a completely new deviceId, the current user would appear as a brand new user in dashboard.
@@ -641,7 +641,7 @@ typedef NSDictionary *_Nullable (^DDLocationInfoBlock)(void);
 
  @returns the current session id
 
- @see [Tracking Sessions](https://github.com/amplitude/Amplitude-iOS#tracking-sessions)
+ @see [Tracking Sessions](https://help.amplitude.com/hc/en-us/articles/115002323627-Tracking-Session)
  */
 - (long long)getSessionId;
 
