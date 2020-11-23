@@ -64,8 +64,8 @@ const long kDDMinTimeBetweenSessionsMillis = 5 * 60 * 1000; // 5 minutes
 const int kDDMaxStringLength = 1024;
 const int kDDMaxPropertyKeys = 1000;
 
-NSString *const IDENTIFY_EVENT = @"$identify";
-NSString *const GROUP_IDENTIFY_EVENT = @"$groupidentify";
+NSString *const DD_IDENTIFY_EVENT = @"$identify";
+NSString *const DD_GROUP_IDENTIFY_EVENT = @"$groupidentify";
 NSString *const DD_OP_ADD = @"$add";
 NSString *const DD_OP_APPEND = @"$append";
 NSString *const DD_OP_CLEAR_ALL = @"$clearAll";

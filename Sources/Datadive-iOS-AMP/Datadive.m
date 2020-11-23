@@ -568,7 +568,7 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
             DATADIVE_ERROR(@"ERROR: JSONSerializing event type %@ resulted in an NULL string", eventType);
             return;
         }
-        if ([eventType isEqualToString:IDENTIFY_EVENT] || [eventType isEqualToString:GROUP_IDENTIFY_EVENT]) {
+        if ([eventType isEqualToString:DD_IDENTIFY_EVENT] || [eventType isEqualToString:DD_GROUP_IDENTIFY_EVENT]) {
             (void) [self.dbHelper addIdentify:jsonString];
         } else {
             (void) [self.dbHelper addEvent:jsonString];
@@ -1199,7 +1199,7 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
     if (identify == nil || [identify.userPropertyOperations count] == 0) {
         return;
     }
-    [self logEvent:IDENTIFY_EVENT withEventProperties:nil withApiProperties:nil withUserProperties:identify.userPropertyOperations withGroups:nil withGroupProperties:nil withTimestamp:nil outOfSession:outOfSession];
+    [self logEvent:DD_IDENTIFY_EVENT withEventProperties:nil withApiProperties:nil withUserProperties:identify.userPropertyOperations withGroups:nil withGroupProperties:nil withTimestamp:nil outOfSession:outOfSession];
 }
 
 - (void)groupIdentifyWithGroupType:(NSString *)groupType groupName:(NSObject *)groupName groupIdentify:(DDIdentify *)groupIdentify {
@@ -1217,7 +1217,7 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
     }
 
     NSMutableDictionary *groups = [NSMutableDictionary dictionaryWithObjectsAndKeys:groupName, groupType, nil];
-    [self logEvent:GROUP_IDENTIFY_EVENT withEventProperties:nil withApiProperties:nil withUserProperties:nil withGroups:groups withGroupProperties:groupIdentify.userPropertyOperations withTimestamp:nil outOfSession:outOfSession];
+    [self logEvent:DD_GROUP_IDENTIFY_EVENT withEventProperties:nil withApiProperties:nil withUserProperties:nil withGroups:groups withGroupProperties:groupIdentify.userPropertyOperations withTimestamp:nil outOfSession:outOfSession];
 }
 
 #pragma mark - configurations
@@ -1268,7 +1268,7 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
 
     NSMutableDictionary *groups = [NSMutableDictionary dictionaryWithObjectsAndKeys:groupName, groupType, nil];
     DDIdentify *identify = [[DDIdentify identify] set:groupType value:groupName];
-    [self logEvent:IDENTIFY_EVENT withEventProperties:nil withApiProperties:nil withUserProperties:identify.userPropertyOperations withGroups:groups withGroupProperties:nil withTimestamp:nil outOfSession:NO];
+    [self logEvent:DD_IDENTIFY_EVENT withEventProperties:nil withApiProperties:nil withUserProperties:identify.userPropertyOperations withGroups:groups withGroupProperties:nil withTimestamp:nil outOfSession:NO];
 
 }
 

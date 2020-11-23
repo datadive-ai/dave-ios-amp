@@ -45,8 +45,8 @@ extern const long kDDMinTimeBetweenSessionsMillis;
 extern const int kDDMaxStringLength;
 extern const int kDDMaxPropertyKeys;
 
-extern NSString *const IDENTIFY_EVENT;
-extern NSString *const GROUP_IDENTIFY_EVENT;
+extern NSString *const DD_IDENTIFY_EVENT;
+extern NSString *const DD_GROUP_IDENTIFY_EVENT;
 extern NSString *const DD_OP_ADD;
 extern NSString *const DD_OP_APPEND;
 extern NSString *const DD_OP_CLEAR_ALL;

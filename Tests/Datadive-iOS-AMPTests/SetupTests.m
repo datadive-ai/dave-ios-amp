@@ -104,7 +104,7 @@
     NSDictionary *expected = [NSDictionary dictionaryWithObject:properties forKey:DD_OP_SET];
 
     NSDictionary *event = [self.datadive getLastIdentify];
-    XCTAssertEqualObjects([event objectForKey:@"event_type"], IDENTIFY_EVENT);
+    XCTAssertEqualObjects([event objectForKey:@"event_type"], DD_IDENTIFY_EVENT);
     XCTAssertEqualObjects([event objectForKey:@"user_properties"], expected);
     XCTAssertEqualObjects([event objectForKey:@"event_properties"], [NSDictionary dictionary]); // event properties should be empty
     XCTAssertEqual(1, [[event objectForKey:@"sequence_number"] intValue]);
