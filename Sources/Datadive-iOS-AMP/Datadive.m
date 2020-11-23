@@ -146,7 +146,7 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
 
     // compiler wants explicit key nil check even though DDUtils isEmptyString already has one
     if (instanceName == nil || [DDUtils isEmptyString:instanceName]) {
-        instanceName = kAMPDefaultInstance;
+        instanceName = kDDDefaultInstance;
     }
     instanceName = [instanceName lowercaseString];
 
@@ -169,7 +169,7 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
 
 - (instancetype)initWithInstanceName:(NSString*)instanceName {
     if ([DDUtils isEmptyString:instanceName]) {
-        instanceName = kAMPDefaultInstance;
+        instanceName = kDDDefaultInstance;
     }
     instanceName = [instanceName lowercaseString];
 
@@ -188,9 +188,9 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
         _useAdvertisingIdForDeviceId = NO;
         _backoffUpload = NO;
         _offline = NO;
-        _serverUrl = kAMPEventLogUrl;
-        self.libraryName = kAMPLibrary;
-        self.libraryVersion = kAMPVersion;
+        _serverUrl = kDDEventLogUrl;
+        self.libraryName = kDDLibrary;
+        self.libraryVersion = kDDVersion;
         _inputTrackingOptions = [DDTrackingOptions options];
         _appliedTrackingOptions = [DDTrackingOptions copyOf:_inputTrackingOptions];
         _apiPropertiesTrackingOptions = [NSDictionary dictionary];
@@ -198,11 +198,11 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
         self.instanceName = instanceName;
         _dbHelper = [DDDatabaseHelper getDatabaseHelper:instanceName];
 
-        self.eventUploadThreshold = kAMPEventUploadThreshold;
-        self.eventMaxCount = kAMPEventMaxCount;
-        self.eventUploadMaxBatchSize = kAMPEventUploadMaxBatchSize;
-        self.eventUploadPeriodSeconds = kAMPEventUploadPeriodSeconds;
-        self.minTimeBetweenSessionsMillis = kAMPMinTimeBetweenSessionsMillis;
+        self.eventUploadThreshold = kDDEventUploadThreshold;
+        self.eventMaxCount = kDDEventMaxCount;
+        self.eventUploadMaxBatchSize = kDDEventUploadMaxBatchSize;
+        self.eventUploadPeriodSeconds = kDDEventUploadPeriodSeconds;
+        self.minTimeBetweenSessionsMillis = kDDMinTimeBetweenSessionsMillis;
         _backoffUploadBatchSize = self.eventUploadMaxBatchSize;
 
         _initializerQueue = [[NSOperationQueue alloc] init];
@@ -222,7 +222,7 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
             
             NSString *eventsDataDirectory = [DDUtils platformDataDirectory];
             NSString *propertyListPath = [eventsDataDirectory stringByAppendingPathComponent:@"com.amplitude.plist"];
-            if (![self.instanceName isEqualToString:kAMPDefaultInstance]) {
+            if (![self.instanceName isEqualToString:kDDDefaultInstance]) {
                 propertyListPath = [NSString stringWithFormat:@"%@_%@", propertyListPath, self.instanceName]; // namespace pList with instance name
             }
             self->_propertyListPath = propertyListPath;
@@ -250,15 +250,15 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
             }
 
             // update the database
-            if (oldDBVersion < kAMPDBVersion) {
-                if ([self.dbHelper upgrade:oldDBVersion newVersion:kAMPDBVersion]) {
-                    [self->_propertyList setObject:[NSNumber numberWithInt:kAMPDBVersion] forKey:DATABASE_VERSION];
+            if (oldDBVersion < kDDDBVersion) {
+                if ([self.dbHelper upgrade:oldDBVersion newVersion:kDDDBVersion]) {
+                    [self->_propertyList setObject:[NSNumber numberWithInt:kDDDBVersion] forKey:DATABASE_VERSION];
                     [self savePropertyList];
                 }
             }
 
             // only on default instance, migrate all of old _eventsData object to database store if database just created
-            if ([self.instanceName isEqualToString:kAMPDefaultInstance] && oldDBVersion < kAMPDBFirstVersion) {
+            if ([self.instanceName isEqualToString:kDDDefaultInstance] && oldDBVersion < kDDDBFirstVersion) {
                 if ([self migrateEventsDataToDB]) {
                     // delete events data so don't need to migrate next time
                     if ([[NSFileManager defaultManager] fileExistsAtPath:self->_eventsDataPath]) {
@@ -588,7 +588,7 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
 }
 
 - (void)truncateEventQueues {
-    int numEventsToRemove = MIN(MAX(1, self.eventMaxCount/10), kAMPEventRemoveBatchSize);
+    int numEventsToRemove = MIN(MAX(1, self.eventMaxCount/10), kDDEventRemoveBatchSize);
     int eventCount = [self.dbHelper getEventCount];
     if (eventCount > self.eventMaxCount) {
         [self.dbHelper removeEvents:([self.dbHelper getNthEventId:numEventsToRemove])];
@@ -603,7 +603,7 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
     [event setValue:self.userId forKey:@"user_id"];
     [event setValue:self.deviceId forKey:@"device_id"];
     if ([_appliedTrackingOptions shouldTrackPlatform]) {
-        [event setValue:kAMPPlatform forKey:@"platform"];
+        [event setValue:kDDPlatform forKey:@"platform"];
     }
     if ([_appliedTrackingOptions shouldTrackVersionName]) {
         [event setValue:_deviceInfo.appVersion forKey:@"version_name"];
@@ -630,8 +630,8 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
         [event setValue:_deviceInfo.language forKey:@"language"];
     }
     NSDictionary *library = @{
-        @"name": self.libraryName == nil ? kAMPUnknownLibrary : self.libraryName,
-        @"version": self.libraryVersion == nil ? kAMPUnknownVersion : self.libraryVersion
+        @"name": self.libraryName == nil ? kDDUnknownLibrary : self.libraryName,
+        @"version": self.libraryVersion == nil ? kDDUnknownVersion : self.libraryVersion
     };
     [event setValue:library forKey:@"library"];
     [event setValue:[DDUtils generateUUID] forKey:@"uuid"];
@@ -880,7 +880,7 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
     NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     [request setTimeoutInterval:60.0];
 
-    NSString *apiVersionString = [[NSNumber numberWithInt:kAMPApiVersion] stringValue];
+    NSString *apiVersionString = [[NSNumber numberWithInt:kDDApiVersion] stringValue];
 
     NSMutableData *postData = [[NSMutableData alloc] init];
     [postData appendData:[@"v=" dataUsingEncoding:NSUTF8StringEncoding]];
@@ -1456,8 +1456,8 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
 - (id) truncate:(id)obj {
     if ([obj isKindOfClass:[NSString class]]) {
         obj = (NSString *)obj;
-        if ([obj length] > kAMPMaxStringLength) {
-            obj = [obj substringWithRange:[obj rangeOfComposedCharacterSequencesForRange:NSMakeRange(0, kAMPMaxStringLength)]];
+        if ([obj length] > kDDMaxStringLength) {
+            obj = [obj substringWithRange:[obj rangeOfComposedCharacterSequencesForRange:NSMakeRange(0, kDDMaxStringLength)]];
         }
     } else if ([obj isKindOfClass:[NSArray class]]) {
         NSMutableArray *arr = [NSMutableArray array];
@@ -1468,7 +1468,7 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
         obj = [NSArray arrayWithArray:arr];
     } else if ([obj isKindOfClass:[NSDictionary class]]) {
         // if too many properties, ignore
-        if ([(NSDictionary *)obj count] > kAMPMaxPropertyKeys) {
+        if ([(NSDictionary *)obj count] > kDDMaxPropertyKeys) {
             DATADIVE_LOG(@"WARNING: too many properties (more than 1000), ignoring");
             return [NSDictionary dictionary];
         }
@@ -1484,7 +1484,7 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
                 coercedKey = key;
             }
             // do not truncate revenue receipt field
-            if ([coercedKey isEqualToString:AMP_REVENUE_RECEIPT]) {
+            if ([coercedKey isEqualToString:DD_REVENUE_RECEIPT]) {
                 dict[coercedKey] = objCopy[key];
             } else {
                 dict[coercedKey] = [self truncate:objCopy[key]];

@@ -101,7 +101,7 @@
     XCTAssertEqual([dbHelper getIdentifyCount], 1);
     XCTAssertEqual([dbHelper getTotalEventCount], 1);
 
-    NSDictionary *expected = [NSDictionary dictionaryWithObject:properties forKey:AMP_OP_SET];
+    NSDictionary *expected = [NSDictionary dictionaryWithObject:properties forKey:DD_OP_SET];
 
     NSDictionary *event = [self.datadive getLastIdentify];
     XCTAssertEqualObjects([event objectForKey:@"event_type"], IDENTIFY_EVENT);

@@ -80,7 +80,7 @@
     }
 
     NSMutableDictionary *pins = [[NSMutableDictionary alloc] init];
-    [pins setObject:certs forKey:kAMPEventLogDomain];
+    [pins setObject:certs forKey:kDDEventLogDomain];
 
     if (pins == nil) {
         DATADIVE_LOG(@"Failed to pin a certificate");

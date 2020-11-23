@@ -368,7 +368,7 @@ typedef NSDictionary *_Nullable (^DDLocationInfoBlock)(void);
 
  @see [LogRevenue Backwards Compatability](https://github.com/amplitude/Amplitude-iOS#backwards-compatibility)
  */
-- (void)logRevenue:(NSNumber *)amount;
+- (void)logRevenue:(NSNumber *)amount DEPRECATED_MSG_ATTRIBUTE("Use `logRevenueV2` and `DDRevenue` instead");
 
 /**
  **Note: this is deprecated** - please use `logRevenueV2` and `DDRevenue`
@@ -384,7 +384,7 @@ typedef NSDictionary *_Nullable (^DDLocationInfoBlock)(void);
  */
 - (void)logRevenue:(nullable NSString *)productIdentifier
           quantity:(NSInteger)quantity
-             price:(NSNumber *)price;
+             price:(NSNumber *)price DEPRECATED_MSG_ATTRIBUTE("Use `logRevenueV2` and `DDRevenue` instead");
 
 /**
  **Note: this is deprecated** - please use `logRevenueV2` and `DDRevenue`
@@ -405,7 +405,7 @@ typedef NSDictionary *_Nullable (^DDLocationInfoBlock)(void);
 - (void)logRevenue:(nullable NSString *)productIdentifier
           quantity:(NSInteger)quantity
              price:(NSNumber *)price
-           receipt:(nullable NSData *)receipt;
+           receipt:(nullable NSData *)receipt DEPRECATED_MSG_ATTRIBUTE("Use `logRevenueV2` and `DDRevenue` instead");
 
 /**
  Tracks revenue - API v2. This uses the `DDRevenue` object to store transaction properties such as quantity, price, and revenue type. This is the recommended method for tracking revenue in Datadive.
@@ -485,11 +485,11 @@ typedef NSDictionary *_Nullable (^DDLocationInfoBlock)(void);
  **Note:** Property keys must be <code>NSString</code> objects and values must be serializable.
 
  @param userProperties          An NSDictionary containing any additional data to be tracked.
- @param replace                 This is deprecated. In earlier versions of this SDK, this replaced the in-memory userProperties dictionary with the input, but now userProperties are no longer stored in memory.
+ @param replace                         In earlier versions of this SDK, this replaced the in-memory userProperties dictionary with the input, but now userProperties are no longer stored in memory, so this parameter does nothing.
 
  @see [Setting Multiple Properties with setUserProperties](https://github.com/amplitude/Amplitude-iOS#setting-multiple-properties-with-setuserproperties)
  */
-- (void)setUserProperties:(NSDictionary *)userProperties replace:(BOOL)replace;
+- (void)setUserProperties:(NSDictionary *)userProperties replace:(BOOL)replace DEPRECATED_MSG_ATTRIBUTE("Use `- setUserProperties` instead. In earlier versions of the SDK, `replace: YES` replaced the in-memory userProperties dictionary with the input. However, userProperties are no longer stored in memory, so the flag does nothing.");
 
 /**
  Clears all properties that are tracked on the user level.
@@ -542,9 +542,11 @@ typedef NSDictionary *_Nullable (^DDLocationInfoBlock)(void);
 - (void)setUserId:(nullable NSString *)userId;
 
 /**
- Sets the userId and starts a new session. The previous session for the previous user will be terminated and a new session will begin for the new user id.
+ Sets the userId. If startNewSession is true, the previous session for the previous user will be terminated and a new session will begin for the new userId.
 
  @param userId                  If your app has its own login system that you want to track users with, you can set the userId.
+ 
+ @param startNewSession         Terminates previous user session and creates a new one for the new user
 
  @see [Setting Custom UserIds](https://github.com/amplitude/Amplitude-iOS#setting-custom-user-ids)
  */
@@ -644,6 +646,17 @@ typedef NSDictionary *_Nullable (^DDLocationInfoBlock)(void);
  @see [Tracking Sessions](https://help.amplitude.com/hc/en-us/articles/115002323627-Tracking-Session)
  */
 - (long long)getSessionId;
+
+/**
+ Sets the sessionId.
+
+ **NOTE: not recommended unless you know what you are doing**
+
+ @param timestamp                  Timestamp representing the sessionId
+
+ @see [Tracking Sessions](https://help.amplitude.com/hc/en-us/articles/115002323627-Tracking-Session)
+ */
+- (void)setSessionId:(long long)timestamp;
 
 /**
  Manually forces the instance to immediately upload all unsent events.

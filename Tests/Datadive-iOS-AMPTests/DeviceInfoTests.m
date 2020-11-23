@@ -36,11 +36,11 @@
 //    id mockBundle = [OCMockObject niceMockForClass:[NSBundle class]];
 //    [[[mockBundle stub] andReturn:mockBundle] mainBundle];
 //    NSDictionary *mockDictionary = @{
-//        @"CFBundleShortVersionString": kAMPVersion
+//        @"CFBundleShortVersionString": kDDVersion
 //    };
 //    OCMStub([mockBundle infoDictionary]).andReturn(mockDictionary);
 //
-//    XCTAssertEqualObjects(kAMPVersion, _deviceInfo.appVersion);
+//    XCTAssertEqualObjects(kDDVersion, _deviceInfo.appVersion);
 //    [mockBundle stopMocking];
 //}
 

@@ -30,7 +30,7 @@
     DDDatabaseHelper *dbHelper = [DDDatabaseHelper getDatabaseHelper];
     XCTAssertEqual(dbHelper, [DDDatabaseHelper getDatabaseHelper:nil]);
     XCTAssertEqual(dbHelper, [DDDatabaseHelper getDatabaseHelper:@""]);
-    XCTAssertEqual(dbHelper, [DDDatabaseHelper getDatabaseHelper:kAMPDefaultInstance]);
+    XCTAssertEqual(dbHelper, [DDDatabaseHelper getDatabaseHelper:kDDDefaultInstance]);
 
     DDDatabaseHelper *a = [DDDatabaseHelper getDatabaseHelper:@"a"];
     DDDatabaseHelper *b = [DDDatabaseHelper getDatabaseHelper:@"b"];
@@ -43,7 +43,7 @@
     // test case insensitive instance name
     XCTAssertEqual(a, [DDDatabaseHelper getDatabaseHelper:@"A"]);
     XCTAssertEqual(b, [DDDatabaseHelper getDatabaseHelper:@"B"]);
-    XCTAssertEqual(dbHelper, [DDDatabaseHelper getDatabaseHelper:[kAMPDefaultInstance uppercaseString]]);
+    XCTAssertEqual(dbHelper, [DDDatabaseHelper getDatabaseHelper:[kDDDefaultInstance uppercaseString]]);
 
     // test each instance maintains separate database files
     XCTAssertTrue([a.databasePath rangeOfString:@"com.amplitude.database_a"].location != NSNotFound);

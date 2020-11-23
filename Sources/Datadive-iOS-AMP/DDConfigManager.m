@@ -43,13 +43,13 @@
 
 - (instancetype)init {
     if ((self = [super init])) {
-        self.ingestionEndpoint = kAMPEventLogUrl;
+        self.ingestionEndpoint = kDDEventLogUrl;
     }
     return self;
 }
 
 - (void)refresh:(void(^)(void))completionHandler {
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:kAMPDyanmicConfigUrl]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:kDDDyanmicConfigUrl]];
 
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request

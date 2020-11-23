@@ -67,7 +67,7 @@
 }
 
 - (NSString *)osName {
-    return kAMPOSName;
+    return kDDOSName;
 }
 
 - (NSString *)osVersion {

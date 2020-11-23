@@ -90,7 +90,7 @@ static NSString *const GET_VALUE = @"SELECT %@, %@ FROM %@ WHERE %@ = ?;";
     });
 
     if (instanceName == nil || [DDUtils isEmptyString:instanceName]) {
-        instanceName = kAMPDefaultInstance;
+        instanceName = kDDDefaultInstance;
     }
     instanceName = [instanceName lowercaseString];
 
@@ -111,14 +111,14 @@ static NSString *const GET_VALUE = @"SELECT %@, %@ FROM %@ WHERE %@ = ?;";
 
 - (instancetype)initWithInstanceName:(NSString *)instanceName {
     if ([DDUtils isEmptyString:instanceName]) {
-        instanceName = kAMPDefaultInstance;
+        instanceName = kDDDefaultInstance;
     }
     instanceName = [instanceName lowercaseString];
 
     if ((self = [super init])) {
         NSString *databaseDirectory = [DDUtils platformDataDirectory];
         NSString *databasePath = [databaseDirectory stringByAppendingPathComponent:@"com.amplitude.database"];
-        if (![instanceName isEqualToString:kAMPDefaultInstance]) {
+        if (![instanceName isEqualToString:kDDDefaultInstance]) {
             databasePath = [NSString stringWithFormat:@"%@_%@", databasePath, instanceName];
         }
         _databasePath = databasePath;

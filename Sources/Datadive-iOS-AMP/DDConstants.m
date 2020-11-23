@@ -23,76 +23,76 @@
 
 #import "DDConstants.h"
 
-NSString *const kAMPLibrary = @"datadive-ios";
-NSString *const kAMPVersion = @"1.2.0";
-NSString *const kAMPUnknownLibrary = @"unknown-library";
-NSString *const kAMPUnknownVersion = @"unknown-version";
-NSString *const kAMPEventLogDomain = @"source.datadive.ai";
-NSString *const kAMPEventLogUrl = @"https://source.datadive.ai/event/";
-NSString *const kAMPDyanmicConfigUrl = @"https://regionconfig.datadive.ai/";
-NSString *const kAMPDefaultInstance = @"$default_instance";
-const int kAMPApiVersion = 3;
-const int kAMPDBVersion = 3;
-const int kAMPDBFirstVersion = 2; // to detect if DB exists yet
+NSString *const kDDLibrary = @"datadive-ios";
+NSString *const kDDVersion = @"1.2.0.1";
+NSString *const kDDUnknownLibrary = @"unknown-library";
+NSString *const kDDUnknownVersion = @"unknown-version";
+NSString *const kDDEventLogDomain = @"source.datadive.ai";
+NSString *const kDDEventLogUrl = @"https://source.datadive.ai/event/";
+NSString *const kDDDyanmicConfigUrl = @"https://regionconfig.datadive.ai/";
+NSString *const kDDDefaultInstance = @"$default_instance";
+const int kDDApiVersion = 3;
+const int kDDDBVersion = 3;
+const int kDDDBFirstVersion = 2; // to detect if DB exists yet
 
 #if TARGET_OS_OSX
-    const int kAMPEventUploadThreshold = 30;
-    const int kAMPEventMaxCount = 1000;
-    NSString *const kAMPPlatform = @"macOS";
-    NSString *const kAMPOSName = @"macos";
+    const int kDDEventUploadThreshold = 30;
+    const int kDDEventMaxCount = 1000;
+    NSString *const kDDPlatform = @"macOS";
+    NSString *const kDDOSName = @"macos";
 #elif TARGET_OS_TV // For tvOS, upload events immediately, don't save too many events locally.
-    const int kAMPEventUploadThreshold = 1;
-    const int kAMPEventMaxCount = 100;
-    NSString *const kAMPPlatform = @"tvOS";
-    NSString *const kAMPOSName = @"tvos";
+    const int kDDEventUploadThreshold = 1;
+    const int kDDEventMaxCount = 100;
+    NSString *const kDDPlatform = @"tvOS";
+    NSString *const kDDOSName = @"tvos";
 #elif TARGET_OS_MACCATALYST // This is when iPad app runs on mac.
-    const int kAMPEventUploadThreshold = 30;
-    const int kAMPEventMaxCount = 1000;
-    NSString *const kAMPPlatform = @"macOS";
-    NSString *const kAMPOSName = @"macos";
+    const int kDDEventUploadThreshold = 30;
+    const int kDDEventMaxCount = 1000;
+    NSString *const kDDPlatform = @"macOS";
+    NSString *const kDDOSName = @"macos";
 #else // iOS, simulator, etc.
-    const int kAMPEventUploadThreshold = 30;
-    const int kAMPEventMaxCount = 1000;
-    NSString *const kAMPPlatform = @"iOS";
-    NSString *const kAMPOSName = @"ios";
+    const int kDDEventUploadThreshold = 30;
+    const int kDDEventMaxCount = 1000;
+    NSString *const kDDPlatform = @"iOS";
+    NSString *const kDDOSName = @"ios";
 #endif
 
-const int kAMPEventUploadMaxBatchSize = 100;
-const int kAMPEventRemoveBatchSize = 20;
-const int kAMPEventUploadPeriodSeconds = 30; // 30 seconds
-const long kAMPMinTimeBetweenSessionsMillis = 5 * 60 * 1000; // 5 minutes
-const int kAMPMaxStringLength = 1024;
-const int kAMPMaxPropertyKeys = 1000;
+const int kDDEventUploadMaxBatchSize = 100;
+const int kDDEventRemoveBatchSize = 20;
+const int kDDEventUploadPeriodSeconds = 30; // 30 seconds
+const long kDDMinTimeBetweenSessionsMillis = 5 * 60 * 1000; // 5 minutes
+const int kDDMaxStringLength = 1024;
+const int kDDMaxPropertyKeys = 1000;
 
 NSString *const IDENTIFY_EVENT = @"$identify";
 NSString *const GROUP_IDENTIFY_EVENT = @"$groupidentify";
-NSString *const AMP_OP_ADD = @"$add";
-NSString *const AMP_OP_APPEND = @"$append";
-NSString *const AMP_OP_CLEAR_ALL = @"$clearAll";
-NSString *const AMP_OP_PREPEND = @"$prepend";
-NSString *const AMP_OP_SET = @"$set";
-NSString *const AMP_OP_SET_ONCE = @"$setOnce";
-NSString *const AMP_OP_UNSET = @"$unset";
+NSString *const DD_OP_ADD = @"$add";
+NSString *const DD_OP_APPEND = @"$append";
+NSString *const DD_OP_CLEAR_ALL = @"$clearAll";
+NSString *const DD_OP_PREPEND = @"$prepend";
+NSString *const DD_OP_SET = @"$set";
+NSString *const DD_OP_SET_ONCE = @"$setOnce";
+NSString *const DD_OP_UNSET = @"$unset";
 
-NSString *const AMP_REVENUE_PRODUCT_ID = @"$productId";
-NSString *const AMP_REVENUE_QUANTITY = @"$quantity";
-NSString *const AMP_REVENUE_PRICE = @"$price";
-NSString *const AMP_REVENUE_REVENUE_TYPE = @"$revenueType";
-NSString *const AMP_REVENUE_RECEIPT = @"$receipt";
+NSString *const DD_REVENUE_PRODUCT_ID = @"$productId";
+NSString *const DD_REVENUE_QUANTITY = @"$quantity";
+NSString *const DD_REVENUE_PRICE = @"$price";
+NSString *const DD_REVENUE_REVENUE_TYPE = @"$revenueType";
+NSString *const DD_REVENUE_RECEIPT = @"$receipt";
 
-NSString *const AMP_TRACKING_OPTION_CARRIER = @"carrier";
-NSString *const AMP_TRACKING_OPTION_CITY = @"city";
-NSString *const AMP_TRACKING_OPTION_COUNTRY = @"country";
-NSString *const AMP_TRACKING_OPTION_DEVICE_MANUFACTURER = @"device_manufacturer";
-NSString *const AMP_TRACKING_OPTION_DEVICE_MODEL = @"device_model";
-NSString *const AMP_TRACKING_OPTION_DMA = @"dma";
-NSString *const AMP_TRACKING_OPTION_IDFA = @"idfa";
-NSString *const AMP_TRACKING_OPTION_IDFV = @"idfv";
-NSString *const AMP_TRACKING_OPTION_IP_ADDRESS = @"ip_address";
-NSString *const AMP_TRACKING_OPTION_LANGUAGE = @"language";
-NSString *const AMP_TRACKING_OPTION_LAT_LNG = @"lat_lng";
-NSString *const AMP_TRACKING_OPTION_OS_NAME = @"os_name";
-NSString *const AMP_TRACKING_OPTION_OS_VERSION = @"os_version";
-NSString *const AMP_TRACKING_OPTION_PLATFORM = @"platform";
-NSString *const AMP_TRACKING_OPTION_REGION = @"region";
-NSString *const AMP_TRACKING_OPTION_VERSION_NAME = @"version_name";
+NSString *const DD_TRACKING_OPTION_CARRIER = @"carrier";
+NSString *const DD_TRACKING_OPTION_CITY = @"city";
+NSString *const DD_TRACKING_OPTION_COUNTRY = @"country";
+NSString *const DD_TRACKING_OPTION_DEVICE_MANUFACTURER = @"device_manufacturer";
+NSString *const DD_TRACKING_OPTION_DEVICE_MODEL = @"device_model";
+NSString *const DD_TRACKING_OPTION_DMA = @"dma";
+NSString *const DD_TRACKING_OPTION_IDFA = @"idfa";
+NSString *const DD_TRACKING_OPTION_IDFV = @"idfv";
+NSString *const DD_TRACKING_OPTION_IP_ADDRESS = @"ip_address";
+NSString *const DD_TRACKING_OPTION_LANGUAGE = @"language";
+NSString *const DD_TRACKING_OPTION_LAT_LNG = @"lat_lng";
+NSString *const DD_TRACKING_OPTION_OS_NAME = @"os_name";
+NSString *const DD_TRACKING_OPTION_OS_VERSION = @"os_version";
+NSString *const DD_TRACKING_OPTION_PLATFORM = @"platform";
+NSString *const DD_TRACKING_OPTION_REGION = @"region";
+NSString *const DD_TRACKING_OPTION_VERSION_NAME = @"version_name";

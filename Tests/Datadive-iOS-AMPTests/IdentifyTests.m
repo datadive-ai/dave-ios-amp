@@ -61,7 +61,7 @@
     [operations setObject:value6 forKey:property6];
 
     NSMutableDictionary *expected = [NSMutableDictionary dictionary];
-    [expected setObject:operations forKey:AMP_OP_ADD];
+    [expected setObject:operations forKey:DD_OP_ADD];
 
     XCTAssertEqualObjects(identify.userPropertyOperations, expected);
 }
@@ -93,7 +93,7 @@
     [operations setObject:value4 forKey:property4];
 
     NSMutableDictionary *expected = [NSMutableDictionary dictionary];
-    [expected setObject:operations forKey:AMP_OP_SET];
+    [expected setObject:operations forKey:DD_OP_SET];
 
     XCTAssertEqualObjects(identify.userPropertyOperations, expected);
 }
@@ -125,7 +125,7 @@
     [operations setObject:value4 forKey:property4];
 
     NSMutableDictionary *expected = [NSMutableDictionary dictionary];
-    [expected setObject:operations forKey:AMP_OP_SET_ONCE];
+    [expected setObject:operations forKey:DD_OP_SET_ONCE];
 
     XCTAssertEqualObjects(identify.userPropertyOperations, expected);
 }
@@ -159,7 +159,7 @@
     [operations setObject:value4 forKey:property4];
 
     NSMutableDictionary *expected = [NSMutableDictionary dictionary];
-    [expected setObject:operations forKey:AMP_OP_APPEND];
+    [expected setObject:operations forKey:DD_OP_APPEND];
 
     XCTAssertEqualObjects(identify.userPropertyOperations, expected);
 }
@@ -193,7 +193,7 @@
     [operations setObject:value4 forKey:property4];
 
     NSMutableDictionary *expected = [NSMutableDictionary dictionary];
-    [expected setObject:operations forKey:AMP_OP_PREPEND];
+    [expected setObject:operations forKey:DD_OP_PREPEND];
 
     XCTAssertEqualObjects(identify.userPropertyOperations, expected);
 }
@@ -210,7 +210,7 @@
     [operations setObject:@"-" forKey:property2];
 
     NSMutableDictionary *expected = [NSMutableDictionary dictionary];
-    [expected setObject:operations forKey:AMP_OP_UNSET];
+    [expected setObject:operations forKey:DD_OP_UNSET];
 
     XCTAssertEqualObjects(identify.userPropertyOperations, expected);
 }
@@ -245,7 +245,7 @@
     NSDictionary *unset = [NSDictionary dictionaryWithObject:@"-" forKey:property4];
     NSDictionary *append = [NSDictionary dictionaryWithObject:value5 forKey:property5];
 
-    NSDictionary *expected = [NSDictionary dictionaryWithObjectsAndKeys:setOnce, AMP_OP_SET_ONCE, add, AMP_OP_ADD, set, AMP_OP_SET, unset, AMP_OP_UNSET, append, AMP_OP_APPEND, nil];
+    NSDictionary *expected = [NSDictionary dictionaryWithObjectsAndKeys:setOnce, DD_OP_SET_ONCE, add, DD_OP_ADD, set, DD_OP_SET, unset, DD_OP_UNSET, append, DD_OP_APPEND, nil];
 
     XCTAssertEqualObjects(identify.userPropertyOperations, expected);
 }
@@ -263,7 +263,7 @@
     [operations setObject:value1 forKey:property];
 
     NSMutableDictionary *expected = [NSMutableDictionary dictionary];
-    [expected setObject:operations forKey:AMP_OP_SET_ONCE];
+    [expected setObject:operations forKey:DD_OP_SET_ONCE];
 
     XCTAssertEqualObjects(identify.userPropertyOperations, expected);
 }
@@ -280,7 +280,7 @@
     [operations setObject:urlString forKey:key];
 
     NSMutableDictionary *expected = [NSMutableDictionary dictionary];
-    [expected setObject:operations forKey:AMP_OP_SET];
+    [expected setObject:operations forKey:DD_OP_SET];
 
     XCTAssertEqualObjects(identify.userPropertyOperations, expected);
 }
@@ -295,7 +295,7 @@
     [[[[identify setOnce:property value:value1] add:property value:value2] set:property value:value3] unset:property];
 
     NSMutableDictionary *expected = [NSMutableDictionary dictionary];
-    [expected setObject:@"-" forKey:AMP_OP_CLEAR_ALL];
+    [expected setObject:@"-" forKey:DD_OP_CLEAR_ALL];
 
     XCTAssertEqualObjects(identify.userPropertyOperations, expected);
 }
@@ -314,7 +314,7 @@
     [operations setObject:value1 forKey:property];
 
     NSMutableDictionary *expected = [NSMutableDictionary dictionary];
-    [expected setObject:operations forKey:AMP_OP_SET_ONCE];
+    [expected setObject:operations forKey:DD_OP_SET_ONCE];
 
     XCTAssertEqualObjects(identify.userPropertyOperations, expected);
 }

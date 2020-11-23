@@ -58,7 +58,7 @@
 
 - (DDIdentify *)add:(NSString *)property value:(NSObject *)value {
     if ([value isKindOfClass:[NSNumber class]] || [value isKindOfClass:[NSString class]]) {
-        [self addToUserProperties:AMP_OP_ADD property:property value:value];
+        [self addToUserProperties:DD_OP_ADD property:property value:value];
     } else {
         DATADIVE_LOG(@"Unsupported value type for ADD operation, expecting NSNumber or NSString");
     }
@@ -66,38 +66,38 @@
 }
 
 - (DDIdentify *)append:(NSString *)property value:(NSObject *)value {
-    [self addToUserProperties:AMP_OP_APPEND property:property value:value];
+    [self addToUserProperties:DD_OP_APPEND property:property value:value];
     return self;
 }
 
 - (DDIdentify *)clearAll {
     if ([_userPropertyOperations count] > 0) {
-        if ([_userPropertyOperations objectForKey:AMP_OP_CLEAR_ALL] == nil) {
+        if ([_userPropertyOperations objectForKey:DD_OP_CLEAR_ALL] == nil) {
             DATADIVE_LOG(@"Need to send $clearAll on its own Identify object without any other operations, skipping $clearAll");
         }
         return self;
     }
-    [_userPropertyOperations setObject:@"-" forKey:AMP_OP_CLEAR_ALL];
+    [_userPropertyOperations setObject:@"-" forKey:DD_OP_CLEAR_ALL];
     return self;
 }
 
 - (DDIdentify *)prepend:(NSString *)property value:(NSObject *)value {
-    [self addToUserProperties:AMP_OP_PREPEND property:property value:value];
+    [self addToUserProperties:DD_OP_PREPEND property:property value:value];
     return self;
 }
 
 - (DDIdentify *)set:(NSString *)property value:(NSObject *)value {
-    [self addToUserProperties:AMP_OP_SET property:property value:value];
+    [self addToUserProperties:DD_OP_SET property:property value:value];
     return self;
 }
 
 - (DDIdentify *)setOnce:(NSString *)property value:(NSObject *)value {
-    [self addToUserProperties:AMP_OP_SET_ONCE property:property value:value];
+    [self addToUserProperties:DD_OP_SET_ONCE property:property value:value];
     return self;
 }
 
 - (DDIdentify *)unset:(NSString *)property {
-    [self addToUserProperties:AMP_OP_UNSET property:property value:@"-"];
+    [self addToUserProperties:DD_OP_UNSET property:property value:@"-"];
     return self;
 }
 
@@ -108,7 +108,7 @@
     }
 
     // Check that clearAll wasn't already used in this Identify.
-    if ([_userPropertyOperations objectForKey:AMP_OP_CLEAR_ALL] != nil) {
+    if ([_userPropertyOperations objectForKey:DD_OP_CLEAR_ALL] != nil) {
         DATADIVE_LOG(@"This Identify already contains a $clearAll operation, ignoring operation %@", operation);
         return;
     }

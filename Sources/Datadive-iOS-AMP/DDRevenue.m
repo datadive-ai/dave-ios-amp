@@ -109,17 +109,17 @@
         dict = [_properties mutableCopy];
     }
 
-    [dict setValue:_productId forKey:AMP_REVENUE_PRODUCT_ID];
-    [dict setValue:[NSNumber numberWithInteger:_quantity] forKey:AMP_REVENUE_QUANTITY];
-    [dict setValue:_price forKey:AMP_REVENUE_PRICE];
-    [dict setValue:_revenueType forKey:AMP_REVENUE_REVENUE_TYPE];
+    [dict setValue:_productId forKey:DD_REVENUE_PRODUCT_ID];
+    [dict setValue:[NSNumber numberWithInteger:_quantity] forKey:DD_REVENUE_QUANTITY];
+    [dict setValue:_price forKey:DD_REVENUE_PRICE];
+    [dict setValue:_revenueType forKey:DD_REVENUE_REVENUE_TYPE];
 
     if ([_receipt respondsToSelector:@selector(base64EncodedStringWithOptions:)]) {
-        [dict setValue:[_receipt base64EncodedStringWithOptions:0] forKey:AMP_REVENUE_RECEIPT];
+        [dict setValue:[_receipt base64EncodedStringWithOptions:0] forKey:DD_REVENUE_RECEIPT];
     } else {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated"
-        [dict setValue:[_receipt base64Encoding] forKey:AMP_REVENUE_RECEIPT];
+        [dict setValue:[_receipt base64Encoding] forKey:DD_REVENUE_RECEIPT];
 #pragma clang diagnostic pop
     }
 
