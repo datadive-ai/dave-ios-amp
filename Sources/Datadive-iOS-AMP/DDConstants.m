@@ -24,7 +24,7 @@
 #import "DDConstants.h"
 
 NSString *const kDDLibrary = @"datadive-ios";
-NSString *const kDDVersion = @"1.2.0.1";
+NSString *const kDDVersion = @"1.2.1";
 NSString *const kDDUnknownLibrary = @"unknown-library";
 NSString *const kDDUnknownVersion = @"unknown-version";
 NSString *const kDDEventLogDomain = @"source.datadive.ai";
