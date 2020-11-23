@@ -221,12 +221,12 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
         #endif
             
             NSString *eventsDataDirectory = [DDUtils platformDataDirectory];
-            NSString *propertyListPath = [eventsDataDirectory stringByAppendingPathComponent:@"com.amplitude.plist"];
+            NSString *propertyListPath = [eventsDataDirectory stringByAppendingPathComponent:@"ai.datadive.plist"];
             if (![self.instanceName isEqualToString:kDDDefaultInstance]) {
                 propertyListPath = [NSString stringWithFormat:@"%@_%@", propertyListPath, self.instanceName]; // namespace pList with instance name
             }
             self->_propertyListPath = propertyListPath;
-            self->_eventsDataPath = [eventsDataDirectory stringByAppendingPathComponent:@"com.amplitude.archiveDict"];
+            self->_eventsDataPath = [eventsDataDirectory stringByAppendingPathComponent:@"ai.datadive.archiveDict"];
             [self upgradePrefs];
 
             // Load propertyList object
@@ -1542,8 +1542,8 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
 - (BOOL)upgradePrefs {
     // Copy any old data files to new file paths
     NSString *oldEventsDataDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *oldPropertyListPath = [oldEventsDataDirectory stringByAppendingPathComponent:@"com.amplitude.plist"];
-    NSString *oldEventsDataPath = [oldEventsDataDirectory stringByAppendingPathComponent:@"com.amplitude.archiveDict"];
+    NSString *oldPropertyListPath = [oldEventsDataDirectory stringByAppendingPathComponent:@"ai.datadive.plist"];
+    NSString *oldEventsDataPath = [oldEventsDataDirectory stringByAppendingPathComponent:@"ai.datadive.archiveDict"];
     BOOL success = [self moveFileIfNotExists:oldPropertyListPath to:_propertyListPath];
     success &= [self moveFileIfNotExists:oldEventsDataPath to:_eventsDataPath];
     return success;

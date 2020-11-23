@@ -46,10 +46,10 @@
     XCTAssertEqual(dbHelper, [DDDatabaseHelper getDatabaseHelper:[kDDDefaultInstance uppercaseString]]);
 
     // test each instance maintains separate database files
-    XCTAssertTrue([a.databasePath rangeOfString:@"com.amplitude.database_a"].location != NSNotFound);
-    XCTAssertTrue([b.databasePath rangeOfString:@"com.amplitude.database_b"].location != NSNotFound);
-    XCTAssertTrue([dbHelper.databasePath rangeOfString:@"com.amplitude.database"].location != NSNotFound);
-    XCTAssertTrue([dbHelper.databasePath rangeOfString:@"com.amplitude.database_"].location == NSNotFound);
+    XCTAssertTrue([a.databasePath rangeOfString:@"ai.datadive.database_a"].location != NSNotFound);
+    XCTAssertTrue([b.databasePath rangeOfString:@"ai.datadive.database_b"].location != NSNotFound);
+    XCTAssertTrue([dbHelper.databasePath rangeOfString:@"ai.datadive.database"].location != NSNotFound);
+    XCTAssertTrue([dbHelper.databasePath rangeOfString:@"ai.datadive.database_"].location == NSNotFound);
 
     [a deleteDB];
     [b deleteDB];

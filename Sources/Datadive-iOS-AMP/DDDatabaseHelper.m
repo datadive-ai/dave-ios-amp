@@ -44,7 +44,7 @@
     dispatch_queue_t _queue;
 }
 
-static NSString *const QUEUE_NAME = @"com.amplitude.db.queue";
+static NSString *const QUEUE_NAME = @"ai.datadive.db.queue";
 static const void * const kDispatchQueueKey = &kDispatchQueueKey; // some unique key for dispatch queue
 
 static NSString *const EVENT_TABLE_NAME = @"events";
@@ -117,7 +117,7 @@ static NSString *const GET_VALUE = @"SELECT %@, %@ FROM %@ WHERE %@ = ?;";
 
     if ((self = [super init])) {
         NSString *databaseDirectory = [DDUtils platformDataDirectory];
-        NSString *databasePath = [databaseDirectory stringByAppendingPathComponent:@"com.amplitude.database"];
+        NSString *databasePath = [databaseDirectory stringByAppendingPathComponent:@"ai.datadive.database"];
         if (![instanceName isEqualToString:kDDDefaultInstance]) {
             databasePath = [NSString stringWithFormat:@"%@_%@", databasePath, instanceName];
         }
